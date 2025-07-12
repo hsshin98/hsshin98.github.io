@@ -343,10 +343,7 @@
     {% endif %}
 
     {% if entry.award %}
-      <!-- Hidden Award block -->
-      <div class="award hidden d-print-inline">
-        <p>{{ entry.award | markdownify }}</p>
-      </div>
+    <span class="award badge">{{entry.award}}</span>
     {% endif %}
 
     {% if entry.abstract %}
