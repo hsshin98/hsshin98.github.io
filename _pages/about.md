@@ -23,8 +23,8 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am curently a Ph.D student in [CVLAB](https://cvlab.kaist.ac.kr/) at KAIST AI, advised by [Seungryong Kim](https://cvlab.kaist.ac.kr/members/faculty). I am mainly interested in solving practical tasks in an efficient manner, such as image segmentation or 3D reconstruction, through leveraging foundation models. I am also interested in Diffusion models and VLMs.
+I am curently a Ph.D student at the [CVLAB](https://cvlab.kaist.ac.kr/) at KAIST AI, advised by [Seungryong Kim](https://cvlab.kaist.ac.kr/members/faculty). My main research interest lies in solving practical tasks, such as image segmentation and 3D reconstruction, in an efficient manner by leveraging foundation models. I am also interested in diffusion models and Vision-Language Models (VLMs).
 
-Recently, I had the opportunity to intern at Naver AI Lab, working with [Taekyung Kim](https://scholar.google.com/citations?user=u-9bdkwAAAAJ&hl=en). I have also collaborated with Google Research and Microsoft Research Asia, where I am still continuing to work closely with [Anurag Arnab](https://anuragarnab.github.io/) at Google Deepmind.
+I had the opportunity to intern at Naver AI Lab, where I worked with [Taekyung Kim](https://scholar.google.com/citations?user=u-9bdkwAAAAJ&hl=en). I have also collaborated with Google Research and Microsoft Research Asia, and I am continuing to work closely with [Anurag Arnab](https://anuragarnab.github.io/) at Google Deepmind.
 
-Asides research, I am a huge fan of the Scuderia in Formula 1, and I also love to travel. If you have interest in my work, please feel free to reach out to me!
+Outside of research, I am a huge fan of the Scuderia in Formula 1 and I also love to travel. If you are interested in my work, please feel free to reach out to me!
