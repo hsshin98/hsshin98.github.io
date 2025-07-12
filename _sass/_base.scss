@@ -761,9 +761,9 @@ footer.sticky-bottom {
 
         abbr {
           display: inline-block;
-          background-color: white;
+          background-color: var(--global-card-bg-color) ;
           margin-bottom: 0.5rem;
-          color: var(--global-card-bg-color) !important;
+          color: var(--global-theme-color) !important;
 
           a {
             color: var(--global-theme-color);
