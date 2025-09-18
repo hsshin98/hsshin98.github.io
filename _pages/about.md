@@ -25,6 +25,6 @@ latest_posts:
 
 I am curently a Ph.D student at the [CVLAB](https://cvlab.kaist.ac.kr/) at KAIST AI, advised by [Seungryong Kim](https://cvlab.kaist.ac.kr/members/faculty). My main research interest lies in solving practical tasks, such as image segmentation and 3D reconstruction, in an efficient manner by leveraging foundation models. I am also interested in diffusion models and Vision-Language Models (VLMs).
 
-I had the opportunity to intern at Naver AI Lab, where I worked with [Taekyung Kim](https://scholar.google.com/citations?user=u-9bdkwAAAAJ&hl=en). I have also collaborated with Google Research and Microsoft Research Asia, and I am continuing to work closely with [Anurag Arnab](https://anuragarnab.github.io/) at Google Deepmind.
+I had the opportunity to intern at Naver AI Lab, where I worked with [Taekyung Kim](https://scholar.google.com/citations?user=u-9bdkwAAAAJ&hl=en). I have also collaborated with Google Research and Microsoft Research Asia, and I am continuing to work closely with [Anurag Arnab](https://anuragarnab.github.io/) at Google Deepmind and [Paul Hongsuck Seo](https://phseo.github.io/) at Korea University.
 
 Outside of research, I am a huge fan of the Scuderia in Formula 1 and I also love to travel. If you are interested in my work, please feel free to reach out to me!
