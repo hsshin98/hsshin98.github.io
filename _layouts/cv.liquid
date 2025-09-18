@@ -76,52 +76,125 @@ layout: default
         <p class="post-description">{{ page.description }}</p>
       {% endif %}
     </header>
-
     <article>
-      <div class="cv">
-        {% for data in site.data.resume %}
-          {% if site.jsonresume and site.jsonresume.size > 0 %}
-            {% unless site.jsonresume contains data[0] %}
-              {% continue %}
-            {% endunless %}
-          {% endif %}
-          {% if data[0] == 'meta' or data[1].size == 0 %} {% continue %} {% endif %}
-          <a class="anchor" id="{{ data[0] }}"></a>
-          <div class="card mt-3 p-3">
-            <h3 class="card-title font-weight-medium">{{ data[0] | capitalize }}</h3>
-            <div>
-              {% case data[0] %}
-                {% when 'basics' %}
-                  {% include resume/basics.liquid %}
-                {% when 'education' %}
-                  {% include resume/education.liquid %}
-                {% when 'work' %}
-                  {% include resume/work.liquid %}
-                {% when 'volunteer' %}
-                  {% include resume/volunteer.liquid %}
-                {% when 'projects' %}
-                  {% include resume/projects.liquid %}
-                {% when 'awards' %}
-                  {% include resume/awards.liquid %}
-                {% when 'skills' %}
-                  {% include resume/skills.liquid %}
-                {% when 'publications' %}
-                  {% include resume/publications.liquid %}
-                {% when 'languages' %}
-                  {% include resume/languages.liquid %}
-                {% when 'interests' %}
-                  {% include resume/interests.liquid %}
-                {% when 'certificates' %}
-                  {% include resume/certificates.liquid %}
-                {% when 'references' %}
-                  {% include resume/references.liquid %}
-                {% else %}
-
-              {% endcase %}
+        <!-- The interactive PDF previewer is placed here -->
+        
+            <!-- Controls for PDF Navigation -->
+            
+            
+            <!-- Container for the PDF to be rendered in -->
+            <div id="pdf-viewer" class="w-full border rounded-lg overflow-auto bg-gray-200 flex items-center justify-center">
+                <p id="placeholder-text" class="text-gray-500">Loading CV...</p>
+                <canvas id="pdf-canvas" style="display: none;"></canvas>
             </div>
-          </div>
-        {% endfor %}
-      </div>
+        
     </article>
   </div>
 {% endunless %}
+
+
+<script>
+    // Set the worker source for PDF.js. This is crucial for it to work.
+    pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js`;
+
+    const pdfCanvas = document.getElementById('pdf-canvas');
+    const placeholderText = document.getElementById('placeholder-text');
+    const pageNumSpan = document.getElementById('page-num');
+    const pageCountSpan = document.getElementById('page-count');
+    const prevPageBtn = document.getElementById('prev-page');
+    const nextPageBtn = document.getElementById('next-page');
+    const zoomInBtn = document.getElementById('zoom-in');
+    const zoomOutBtn = document.getElementById('zoom-out');
+
+    // State management variables
+    let pdfDoc = null;
+    let pageNum = 1;
+    let pageIsRendering = false;
+    let pageNumIsPending = null;
+    let scale = 1.5;
+
+    // Function to render a specific page
+    const renderPage = num => {
+        pageIsRendering = true;
+        pdfDoc.getPage(num).then(page => {
+            const viewport = page.getViewport({ scale });
+            pdfCanvas.height = viewport.height;
+            pdfCanvas.width = viewport.width;
+
+            const renderContext = {
+                canvasContext: pdfCanvas.getContext('2d'),
+                viewport: viewport
+            };
+
+            page.render(renderContext).promise.then(() => {
+                pageIsRendering = false;
+                if (pageNumIsPending !== null) {
+                    renderPage(pageNumIsPending);
+                    pageNumIsPending = null;
+                }
+                pageNumSpan.textContent = num;
+                updateNavButtons();
+            });
+        });
+    };
+    
+    const queueRenderPage = num => {
+        if (pageIsRendering) {
+            pageNumIsPending = num;
+        } else {
+            renderPage(num);
+        }
+    };
+
+    const updateNavButtons = () => {
+        prevPageBtn.disabled = (pageNum <= 1);
+        nextPageBtn.disabled = (pageNum >= pdfDoc.numPages);
+    };
+    
+    prevPageBtn.addEventListener('click', () => {
+        if (pageNum <= 1) return;
+        pageNum--;
+        queueRenderPage(pageNum);
+    });
+
+    nextPageBtn.addEventListener('click', () => {
+        if (pageNum >= pdfDoc.numPages) return;
+        pageNum++;
+        queueRenderPage(pageNum);
+    });
+
+    zoomInBtn.addEventListener('click', () => {
+        if (scale >= 3.0) return;
+        scale += 0.25;
+        queueRenderPage(pageNum);
+    });
+
+    zoomOutBtn.addEventListener('click', () => {
+        if (scale <= 0.25) return;
+        scale -= 0.25;
+        queueRenderPage(pageNum);
+    });
+
+    const loadPdfFromUrl = (url) => {
+        pdfjsLib.getDocument(url).promise.then(pdfDoc_ => {
+            pdfDoc = pdfDoc_;
+            pdfCanvas.style.display = 'block';
+            placeholderText.style.display = 'none';
+            pageCountSpan.textContent = pdfDoc.numPages;
+            pageNum = 1;
+            renderPage(pageNum);
+        }).catch(err => {
+            console.error('Error loading PDF:', err);
+            placeholderText.textContent = `Failed to load PDF. Please check the file path.`;
+        });
+    };
+    
+    // Use Liquid to insert the PDF path from the page's front matter
+    const pdfUrl = "{% if page.cv_pdf contains '://' %}{{ page.cv_pdf }}{% else %}{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url }}{% endif %}";
+    
+    if (pdfUrl) {
+        loadPdfFromUrl(pdfUrl);
+    } else {
+        placeholderText.textContent = "No PDF specified in page front matter (cv_pdf).";
+    }
+</script>
