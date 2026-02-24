@@ -31,6 +31,18 @@ layout: default
             include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
             cache_bust=true
           %}
+          {% if page.profile.subcaption or page.profile.caption %}
+            <div class="profile-letterbox-wrapper" style="display:none;">
+              {% if page.profile.subcaption %}
+                <div class="profile-subcaption"><em>{{ page.profile.subcaption }}</em></div>
+              {% endif %}
+              {% if page.profile.caption %}
+                <div class="profile-letterbox">
+                  {{ page.profile.caption }}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
         {% endif %}
         {% if page.profile.more_info %}
           <div class="more-info">{{ page.profile.more_info }}</div>
@@ -38,15 +50,15 @@ layout: default
       </div>
     {% endif %}
 
-    <div class="clearfix">{{ content }}</div>
-
-    {% if page.social %}
-      <div class="social">
-        <div class="contact-icons">{% include social.liquid %}</div>
-
-        <div class="contact-note">{{ site.contact_note }}</div>
-      </div>
-    {% endif %}
+    <div class="clearfix">
+      {{ content }}
+      {% if page.social %}
+        <div class="social social-inline">
+          <div class="contact-icons">{% include social.liquid %}</div>
+          <div class="contact-note">{{ site.contact_note }}</div>
+        </div>
+      {% endif %}
+    </div>
 
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
@@ -64,10 +76,16 @@ layout: default
       {% include latest_posts.liquid %}
     {% endif %}
 
+    <!-- Experience -->
+    {% if page.experience %}
+      <h2>experience</h2>
+      {% include experience.liquid %}
+    {% endif %}
+
     <!-- Selected papers -->
     {% if page.selected_papers %}
       <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">publications</a>
+        publications
       </h2>
       (*) denotes equal contribution <br>
       {% include selected_papers.liquid %}

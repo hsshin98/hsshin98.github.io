@@ -8,7 +8,10 @@ profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
+  subcaption: Main Staright @ Suzuka, 2025
+  caption: If you can't tell, I'm a huge fan of the Scuderia in Formula 1. This year is our year, Forza!
   
+experience: false # includes experience section
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 
@@ -23,8 +26,6 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am curently a Ph.D student at the [CVLAB](https://cvlab.kaist.ac.kr/) at KAIST AI, advised by [Seungryong Kim](https://cvlab.kaist.ac.kr/members/faculty). My main research interest lies in solving practical tasks, such as image segmentation and 3D reconstruction, in an efficient manner by leveraging foundation models. I am also interested in diffusion models and Vision-Language Models (VLMs).
+I am curently a Ph.D student at KAIST AI, advised by [Seungryong Kim](https://cvlab.kaist.ac.kr/members/faculty). My main research interest lies exploring foundation models, such as Vision-Language Models and Diffusion Models, for effectively solving practical tasks.
 
-I had the opportunity to intern at Naver AI Lab, where I worked with [Taekyung Kim](https://scholar.google.com/citations?user=u-9bdkwAAAAJ&hl=en). I have also collaborated with Google Research and Microsoft Research Asia, and I am continuing to work closely with [Anurag Arnab](https://anuragarnab.github.io/) at Google Deepmind and [Paul Hongsuck Seo](https://phseo.github.io/) at Korea University.
-
-Outside of research, I am a huge fan of the Scuderia in Formula 1 and I also love to travel. If you are interested in my work, please feel free to reach out to me!
+I had the opportunity to intern at [NAVER AI Lab](https://naver-career.gitbook.io/en/teams/clova-cic/ai-lab), where I worked with [Taekyung Kim](https://scholar.google.com/citations?user=u-9bdkwAAAAJ&hl=en), [Byeongho Heo](https://sites.google.com/view/byeongho-heo/home) and [Dongyoon Han](https://sites.google.com/site/dyhan0920/). I have also collaborated with Google Research and Microsoft Research Asia, and I am continuing to work closely with [Anurag Arnab](https://anuragarnab.github.io/) at Google DeepMind and [Paul Hongsuck Seo](https://phseo.github.io/) at Korea University.

@@ -1,0 +1,16 @@
+<div class="experience">
+  <table class="table table-sm table-borderless">
+    {% for entry in site.data.experience %}
+      <tr>
+        <td class="experience-year">{{ entry.year }}</td>
+        <td>
+          <span class="experience-title">{{ entry.title }}</span>,
+          <span class="experience-institution">{{ entry.institution }}</span>
+          {% if entry.description %}
+            <br><span class="experience-description">{{ entry.description }}</span>
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+</div>
