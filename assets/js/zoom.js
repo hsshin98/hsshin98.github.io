@@ -1,1 +1,1 @@
-$(document).ready((function(){medium_zoom=mediumZoom("[data-zoomable]",{background:getComputedStyle(document.documentElement).getPropertyValue("--global-bg-color")+"ee"})}));
+$(document).ready((function(){medium_zoom=mediumZoom("[data-zoomable]",{background:getComputedStyle(document.documentElement).getPropertyValue("--global-bg-color")+"ee"}),$(".profile figure img").on("click",(function(){$(this).closest(".profile").find(".profile-letterbox-wrapper").slideToggle(200)}))}));
