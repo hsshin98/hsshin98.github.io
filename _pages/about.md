@@ -8,8 +8,8 @@ profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
-  subcaption: Main Staright @ Suzuka, 2025
-  caption: If you can't tell, I'm a huge fan of the Scuderia in Formula 1. This year is our year, Forza!
+  subcaption: Main Straight @ Suzuka, 2025
+  caption: If you can't tell, I'm a huge fan of the Scuderia in Formula 1. This year is our year!
   
 experience: false # includes experience section
 selected_papers: true # includes a list of papers marked as "selected={true}"
